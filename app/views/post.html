@@ -5,10 +5,6 @@
 		<a href="#/post/{{post.slug}}"><h2>{{post.title}}</h2></a>
 		<div ng-bind-html="getPostContent(post.content)"></div>
 	</article>
-	<div class="content-nav">
-		<a class="nav-link nav-previous" ng-if="!lastPage" href="#/posts/{{currentPage + 1}}">older</a>
-		<a class="nav-link nav-next" ng-if="currentPage != 1" href="#/posts/{{currentPage - 1}}">newer</a>
-	</div>
 </section>
 
 <div class="overlay" ng-show="pageLoading">

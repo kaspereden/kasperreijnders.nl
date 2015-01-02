@@ -25,21 +25,21 @@
 	var wpJsonApi = angular.module('wpJsonApi', []);
 
 	wpJsonApi.service('Status', ['$http', function ($http) {
-		// http://kasperreijnders.nl/wp-json/
 		return {
 			get: function () {
-				return $http.get('wp-json/')
+				return $http.get('/wp-json/')
 			}
 		};
 	}]);
 
 	wpJsonApi.service('Posts', ['$http', '$q', function ($http, $q) {
 		return {
-			get: function () {
-				return responder($http.get('wp-json/posts'),  $q)
+			get: function (pageNumber) {
+				var page = '?page=' + (pageNumber || 1);
+				return responder($http.get('/wp-json/posts' + page),  $q)
 			},
-			getPost: function (id) {
-				return responder($http.get('wp-json/posts.js/' + id),  $q)
+			getPostWithFilter: function (filter, name) {
+				return responder($http.get('/wp-json/posts/?filter[' + filter + ']=' + name),  $q)
 			}
 		};
 	}]);
