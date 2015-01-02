@@ -4,17 +4,15 @@
 
 	/**
 	 * @ngdoc function
-	 * @name kasperreijndersnlApp.controller:MainCtrl
+	 * @name websiteApp.controller:MainCtrl
 	 * @description
 	 * # MainCtrl
-	 * Controller of the kasperreijndersnlApp
+	 * Controller of the websiteApp
 	 */
-	angular.module('kasperreijndersnlApp')
-		.controller('MainCtrl', function ($scope) {
-			$scope.awesomeThings = [
-				'HTML5 Boilerplate',
-				'AngularJS',
-				'Karma'
-			];
-		});
+	angular.module('websiteApp')
+		.controller('MainCtrl', ['$scope', 'Status', function ($scope, Status) {
+			Status.get().then(function () {
+				console.log('services are available');
+			});
+		}]);
 }());

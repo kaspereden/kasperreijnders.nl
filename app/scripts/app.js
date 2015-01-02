@@ -1,20 +1,20 @@
-(function () {
+(function (angular) {
 	'use strict';
 
 	/**
 	 * @ngdoc overview
-	 * @name kasperreijndersnlApp
+	 * @name websiteApp
 	 * @description
-	 * # kasperreijndersnlApp
+	 * # websiteApp
 	 *
 	 * Main module of the application.
 	 */
 	angular
-		.module('kasperreijndersnlApp', [
-			'ngCookies',
+		.module('websiteApp', [
 			'ngResource',
 			'ngRoute',
-			'ngSanitize'
+			'ngSanitize',
+			'wpJsonApi'
 		])
 		.config(function ($routeProvider) {
 			$routeProvider
@@ -22,13 +22,13 @@
 					templateUrl: 'views/main.html',
 					controller: 'MainCtrl'
 				})
-				.when('/about', {
-					templateUrl: 'views/about.html',
-					controller: 'AboutCtrl'
+				.when('/posts', {
+					templateUrl: 'views/posts.html',
+					controller: 'PostsCtrl'
 				})
 				.otherwise({
 					redirectTo: '/'
 				});
 		});
 
-}());
+}(angular));
