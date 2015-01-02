@@ -35,9 +35,10 @@
 				$scope.pageLoading = false;
 			});
 		}])
-		.controller('PostController', ['$scope', '$routeParams', '$q', '$sce', 'Posts', 'Status', function ($scope, $routeParams, $sce, $q, Posts, Status) {
+		.controller('PostController', ['$scope', '$routeParams', '$q', '$sce', 'Posts', 'Status', function ($scope, $routeParams, $q, $sce, Posts, Status) {
 			var name = $routeParams.name || 1;
 
+			// @TODO: change to id, which is safer
 			var post = Posts.getPostWithFilter('name', name);
 			post.then(function (post) {
 				$scope.post = post;
